@@ -22,7 +22,10 @@ namespace TodoApi.Controllers
         {
             "Senior"
         };
-
+        private static readonly string[] Colleges = new[]
+        {
+            "Arts and Sciences"
+        };
         private readonly ILogger<NameController> _logger;
 
         public NameController(ILogger<NameController> logger)
@@ -33,12 +36,13 @@ namespace TodoApi.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<NameData> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new NameData
+            return Enumerable.Range(0, 1).Select(index => new NameData
             {
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
                 ,Birthdate = Birthdates[Random.Shared.Next(Birthdates.Length)]
                 ,CollegeProgram = CollegePrograms[Random.Shared.Next(CollegePrograms.Length)]
                 ,Year = Years[Random.Shared.Next(Years.Length)]
+                ,College = Colleges[Random.Shared.Next(Colleges.Length)]
             })
             .ToArray();
         }
